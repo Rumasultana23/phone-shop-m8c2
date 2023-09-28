@@ -1,3 +1,4 @@
+import swal from "sweetalert";
 
 
 const PhoneCard = ({ phone }) => {
@@ -12,7 +13,7 @@ const PhoneCard = ({ phone }) => {
         if (!favoriteItems) {
             addedFavoritesArray.push(phone);
             localStorage.setItem('favorites', JSON.stringify(addedFavoritesArray));
-            alert('product added');
+            swal("Good job!", "Product added successfully !!", "success");
         }
         else {
             const isExists = favoriteItems?.find(phone => phone.id === id);
@@ -20,10 +21,10 @@ const PhoneCard = ({ phone }) => {
             if (!isExists) {
                 addedFavoritesArray.push(...favoriteItems, phone);
                 localStorage.setItem('favorites', JSON.stringify(addedFavoritesArray));
-                alert('product added');
+                swal("Good job!", "Product added successfully !!", "success");
             }
             else{
-                console.log('ache');
+                swal("Error!", "No duplicate!!", "error");
             }
 
         }
